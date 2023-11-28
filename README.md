@@ -8,7 +8,7 @@ Comando usado para gerar a imagem: docker build -f frontend/Dockerfile -t cursos
 
 Path: frontend/frontend-deploy.yaml
 
-########## Arquivo Service ##########
+########## Arquivo de Deployment do Service ##########
 
 Path: frontend/frontend-service.yaml
 
