@@ -5,13 +5,11 @@ Dockerfile gerado no ambiente do VS 2023.
 Comando usado para gerar a imagem: docker build -f frontend/Dockerfile -t cursosfgv .
 
 ########## Arquivo de Deployment frontend-deploy.yaml ##########
-{
----
+
 apiVersion: v1
 kind: Namespace
 metadata:
   name: dotnetcore
----
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -25,7 +23,6 @@ subjects:
 - kind: User
   name: sso:rodrigo.rocha@fgv.br            #sso:<username>@<domain>
   apiGroup: rbac.authorization.k8s.io
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -38,7 +35,6 @@ subjects:
 - kind: Group
   name: system:authenticated
   apiGroup: rbac.authorization.k8s.io
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -62,10 +58,9 @@ spec:
   selector:
     matchLabels:
         app: cursosfgv
-}		
+		
 ########## Arquivo Service frontend-service.yaml ##########
-{
----
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -79,6 +74,5 @@ spec:
       port: 8080
       targetPort: 80
   type: LoadBalancer
-}
 
 ########## Acessar a app: http://IP_ou_FQDN:8080 ##########
