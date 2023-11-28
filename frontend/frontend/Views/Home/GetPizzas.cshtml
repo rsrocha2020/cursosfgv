@@ -1,0 +1,26 @@
+﻿@model IEnumerable<frontend.Models.PizzaInfo>
+
+<img src="/images/pizza1.jpg" class="img-fluid" alt="Cursos FGV" />
+<center><h3>Menu de Cursos FGV</h3></center>
+<br />
+<table class="table">
+   <thead>
+      <tr>
+         <th>Curso</th>
+         <th>Cursos</th>
+         <th>Preço</th>
+         <th>Disponível</th>
+      </tr>
+   </thead>
+   <tbody>
+      @foreach (var curso in @Model)
+      {
+         <tr>
+            <td>@curso.CursoNome</td>
+            <td>@curso.Cursos</td>
+            <td>@curso.CursoPreco.ToString("c")</td>
+            <td>@curso.EmFalta</td>
+         </tr>
+      }
+   </tbody>
+</table>
