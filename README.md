@@ -4,7 +4,7 @@ Dockerfile gerado no ambiente do VS 2023.
 
 Comando usado para gerar a imagem: docker build -f frontend/Dockerfile -t cursosfgv .
 
-########## Arquivo de Deployment frontend-deploy.yml ##########
+########## Arquivo de Deployment frontend-deploy.yaml ##########
 
 ---
 apiVersion: v1
@@ -63,9 +63,8 @@ spec:
     matchLabels:
         app: cursosfgv
 
-########## subemeter o deployment ao kubernetes: kubectl apply –f frontend-deploy.yml ##########
 
-########## Arquivo Service frontend-service.yml ##########
+########## Arquivo Service frontend-service.yaml ##########
 
 ---
 apiVersion: v1
@@ -83,5 +82,3 @@ spec:
   type: LoadBalancer
 
 ########## Acessar a app: http://IP_ou_FQDN:8080 ##########
-
-
