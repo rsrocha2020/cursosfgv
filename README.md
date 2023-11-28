@@ -6,11 +6,12 @@ Comando usado para gerar a imagem: docker build -f frontend/Dockerfile -t cursos
 
 ########## Arquivo de Deployment frontend-deploy.yaml ##########
 
+---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: dotnetcore
-
+---
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -18,13 +19,13 @@ metadata:
   namespace: dotnetcore
 roleRef:
   kind: ClusterRole
-  name: edit
+  name: edit                             #Default ClusterRole
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: User
-  name: sso:user@dominio
+  name: sso:rodrigo.rocha@fgv.br            #sso:<username>@<domain>
   apiGroup: rbac.authorization.k8s.io
-
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -37,7 +38,7 @@ subjects:
 - kind: Group
   name: system:authenticated
   apiGroup: rbac.authorization.k8s.io
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -62,9 +63,9 @@ spec:
     matchLabels:
         app: cursosfgv
 
-
 ########## Arquivo Service frontend-service.yaml ##########
 
+---
 apiVersion: v1
 kind: Service
 metadata:
