@@ -4,7 +4,7 @@ namespace frontend.Services;
 
 public class CursoService : ICursoService
 {
-    public IEnumerable<PizzaInfo> GetCursos()
+    public IEnumerable<CursoInfo> GetCursos()
     {
         var cursos = new List<CursoInfo>
         {
